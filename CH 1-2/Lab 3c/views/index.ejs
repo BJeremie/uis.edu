@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+    <style type="text/css" media="screen">
+        #users {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        #users td,
+        #users th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        #users tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        #users tr:hover {
+            background-color: #ddd;
+        }
+        
+        #users th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <p>Add New User:</p>
+
+
+
+        <form action="/users" method="post" name="form1">
+            <table width="25%" border="0">
+                <tr>
+                    <td>Name</td>
+                    <td><input type="text" class="form-control" name="name" id="name" require/></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" class="form-control" name="email" id="name" require /></td>
+                </tr>
+
+            </table>
+            <button id="btnSubmit" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Submit</button>
+
+        </form>
+
+
+
+
+
+
+    </div>
+
+
+    <div class="container">
+
+        <table id="users">
+
+            <tr style='text-align:left; background-color:#CCC'>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+
+            <% if (users) { %>
+                <% users.forEach(function(user){ %>
+                    <tr>
+                        <td>
+                            <%= user.name %>
+                        </td>
+                        <td>
+                            <%= user.email %>
+                        </td>
+                        <td>
+                            <div style="float:left">
+                                <a href="/userBy/<%= user._id %>" title="Edit User"><button class="btn btn-primary">Edit</button></a>
+                                <a href="/users/<%= user._id %>" onClick="return confirm('Are you sure you want to delete?')" title="DELETE"><button class="btn btn-danger">Delete</button></a>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }) %>
+                        <% } %>
+
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+    <!--
+  <div class="container">
+        <table id="users">
+            <p>USERS:</p>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+
+            <% for(var i=0; i < users.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= users[i].name %>
+                    </td>
+                    <td>
+                        <%= users[i].email %>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+
+    </div>
+
+  -->
+
+
+</body>

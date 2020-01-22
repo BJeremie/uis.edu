@@ -1,0 +1,31 @@
+<form action="/edit/<%= id %>" method="post" name="edit">
+    <table width="25%" border="0">
+        <tr>
+            <td>Title</td>
+            <td><input type="text" name="titles" id="titles" value="<%= titles %>" /></td>
+        </tr>
+        <tr>
+            <td>Slug</td>
+            <td><input type="text" name="slugs" value="<%= slugs %>" /></td>
+        </tr>
+        <tr>
+            <td>Body</td>
+            <td><input type="text" name="body" value="<%= body %>" /></td>
+        </tr>
+        <tr>
+            <td>Comment</td>
+            <td><input type="text" name="comments" value="<%= comments %>" /></td>
+        </tr>
+
+        <tr>
+            <td>Category</td>
+            <td><input type="text" name="categories" value="<%= categories %>" /></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><input type="submit" name="Submit" value="Update" /></td>
+        </tr>
+    </table>
+    <input type="hidden" name="_method" value="PUT" />
+</form>

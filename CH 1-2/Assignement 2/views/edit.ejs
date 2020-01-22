@@ -1,0 +1,33 @@
+<p>
+    Update User</p>
+
+
+<form action="/newUpdate/<%= customers.id %>" method="post" name="edit">
+    <table width="45%" border="0">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" id="name" value="<%= customers.name %>" /></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" value="<%= customers.email %>" /></td>
+        </tr>
+        <tr>
+            <td>Food Type</td>
+            <td><input type="text" name="foodType" value="<%= customers.foodType %>" /></td>
+        </tr>
+        <tr>
+            <td>Phone Number</td>
+            <td><input type="text" name="phone" value="<%= customers.phone %>" /></td>
+        </tr>
+        <tr>
+            <td>Website</td>
+            <td><input type="text" name="foodType" value="<%= customers.website %>" /></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="Submit" value="Update" /></td>
+        </tr>
+    </table>
+    <input type="hidden" name="_method" value="PUT" />
+</form>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home Page</title>
+    <style type="text/css" media="screen">
+        #users {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        #users td,
+        #users th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        #users tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        #users tr:hover {
+            background-color: #ddd;
+        }
+        
+        article {
+            background-color: #aaa;
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 30px;
+            padding: 15px 30px 50px;
+        }
+        
+        #users th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <p>Add Blog:</p>
+
+
+
+        <form action="/users" method="post" name="form1">
+            <table width="85%" border="0">
+                <tr>
+                    <td>Title</td>
+                    <td><input type="text" class="form-control" name="titles" id="titles" require/></td>
+                </tr>
+                <tr>
+                    <td>Slug</td>
+                    <td><input type="text" class="form-control" name="slugs" id="slugs" require /></td>
+                </tr>
+
+                <tr>
+                    <td>Author</td>
+                    <td>
+                        <select class="form-control">
+                        <option value="john">John</option>
+                        <option value="mason">Mason</option>
+                        <option value="mercedes">Mercedes</option>
+                      </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Body</td>
+                    <td><textarea rows="4" cols="50" type="text" class="form-control" name="body" id="body" require></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>Comments</td>
+                    <td><textarea rows="4" cols="50" type="text" class="form-control" name="comments" id="comments" require></textarea></td>
+                </tr>
+
+                <tr>
+                    <td>Category</td>
+                    <td><input type="text" class="form-control" name="categories" id="categories" require /></td>
+                </tr>
+
+            </table>
+            <button id="btnSubmit" type="submit" class="btn btn-info"><i class="icon-hand-right"></i>Submit</button>
+
+        </form>
+
+
+
+
+
+
+    </div>
+
+
+    <div class="container">
+        <hr>
+    </div>
+
+
+    <div class="container">
+
+        <h1>Blog Posts</h1>
+        <% for(let i = 0; i < users.length; i++) { %>
+            <article>
+                <h3>
+                    <%= users[i].titles %>
+                </h3>
+                <p>
+                    <i style="padding: 30px;">by&nbsp;<%= users[i].author %></i>
+
+                </p>
+                <p>
+
+                    <body style="padding: 30px;">
+                        <%= users[i].body %>
+                    </body>
+
+                </p>
+
+                <p>
+                    <strong style="padding: 30px;">
+                      Comments 
+                    </strong>
+                    <ul>
+                        <li style="padding: 0px;">
+                            <%= users[i].comments %>
+                        </li>
+                    </ul>
+                </p>
+                <p>
+                    <strong style="padding: 30px;">
+                      Categories  
+                    </strong>
+                    <ul>
+                        <li style="position: 0px;">
+                            <%= users[i].categories %>
+                        </li>
+                    </ul>
+                </p>
+
+
+                <div style="float:left">
+                    <a href="/userBy/<%= users[i]._id %>" title="Edit User"><button class="btn btn-primary">Edit</button></a>
+                    <a href="/users/<%= users[i]._id %>" onClick="return confirm('Are you sure you want to delete?')" title="DELETE"><button class="btn btn-danger">Delete</button></a>
+                </div>
+                <p></p>
+            </article>
+            <% } %>
+    </div>
+
+
+
+
+
+
+
+
+    <!--
+  <div class="container">
+        <table id="users">
+            <p>USERS:</p>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+
+            <% for(var i=0; i < users.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= users[i].name %>
+                    </td>
+                    <td>
+                        <%= users[i].email %>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+
+    </div>
+
+  -->
+
+
+</body>
